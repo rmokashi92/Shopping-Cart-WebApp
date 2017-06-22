@@ -14,14 +14,12 @@ body {background-color : powderblue}
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>New User</title>
 </head>
-<jsp:useBean id="service" class = "com.demo.model.User" scope= "session"></jsp:useBean>
-<jsp:useBean id="temp" class = "com.data.ConnectDb" scope = "session"></jsp:useBean>
-<jsp:setProperty name="service" property="*"/>
+
 <body>
 
 <h3>Enter following credentials</h3>
 <div>
-<form method = "post">
+<form method = "post" action = "successpage.jsp">
 First Name : <input type = "text" id = "fname" name = "fname"/><br><br>
 Last Name : <input type = "text" id = "lname" name = "lname"/><br><br>
 UserName : <input type = "text" id = "uname" name = "uname"/><br><br>
@@ -30,7 +28,7 @@ Password : <input type = "password" id = "password" name = "password"/><br><br>
 
 <input type = "Submit" id = "register" name = "register"/>
 </form>
-<% temp.registerNewUser(service); %>
+
 </div>
 </body>
 </html>
