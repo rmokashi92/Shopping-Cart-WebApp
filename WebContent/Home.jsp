@@ -10,14 +10,14 @@ div {text-align : center}
 body {background-color : powderblue}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Home Page</title>
 </head>
 
 <body>
-
-<h2>Hello, Guest</h2>
+<h2>Hello, <%=session.getAttribute("userInfo")%></h2>
 
 <h3>WELCOME TO ELECTRONICS SECTION:</h3>
+
 <div>
 <form method = "post" action = "CartServlet">
 <select multiple>
@@ -32,10 +32,7 @@ body {background-color : powderblue}
 <input type = "Submit" id = "addtocart" value="Add to Cart" name = "addtocart"/>
 </form><br><br>
 
-<a href = "loginNewUser.jsp">New User? Register!</a><br><br>
-<a href = "loginpage.jsp">Existing User? Login!</a>
-
-
 </div>
+
 </body>
 </html>

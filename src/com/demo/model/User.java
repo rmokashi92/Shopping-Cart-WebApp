@@ -62,5 +62,11 @@ public class User {
 		this.password = password;
 	}
 	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return getFname();
+	}
+	
 
 }
