@@ -14,11 +14,16 @@ body {background-color : powderblue}
 </head>
 <jsp:useBean id="service" class = "com.demo.model.User" scope= "session"></jsp:useBean>
 <body>
+<img src = "amazon_logo_RGB.jpg" height="100" width="200" align = "middle"/>
+
 <h2>Hello, <%=session.getAttribute("uname")%></h2>
 
 <h3>WELCOME TO ELECTRONICS SECTION:</h3>
 
 <div>
+
+
+
 <form method = "post" action = "CartServlet">
 <select name = "products" multiple>
 <option value = "USB">USB</option>

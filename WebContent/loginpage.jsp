@@ -15,6 +15,7 @@ body {background-color : powderblue}
 <jsp:useBean id="service" class = "com.demo.model.User" scope= "session"></jsp:useBean>
 <jsp:useBean id="temp" class = "com.data.ConnectDb" scope = "session"></jsp:useBean>
 <body>
+<img src = "amazon_logo_RGB.jpg" height="100" width="200" align = "middle"/>
 <script type="text/javascript">
 if(document.getElementById("uname").value == "")
 	{

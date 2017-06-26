@@ -17,6 +17,7 @@ body {background-color : powderblue}
 <jsp:setProperty name="service" property="*"/>
 <body>
 <div>
+<img src = "amazon_logo_RGB.jpg" height="100" width="200" align = "middle"/>
 <h2>Your Account has been created Successfully!</h2><br><br>
 <% temp.registerNewUser(service);
 %>
