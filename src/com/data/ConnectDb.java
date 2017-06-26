@@ -97,6 +97,11 @@ public class ConnectDb {
 		
 		try
 		{
+			if(u.getUname().equals(""))
+			{
+				return false;
+			}
+			
 			ps = con.prepareStatement("select password from user_login where uname = ?;");
 			ps.setString(1, u.getUname());
 			

@@ -15,7 +15,16 @@ body {background-color : powderblue}
 <jsp:useBean id="service" class = "com.demo.model.User" scope= "session"></jsp:useBean>
 <jsp:useBean id="temp" class = "com.data.ConnectDb" scope = "session"></jsp:useBean>
 <body>
-
+<script type="text/javascript">
+if(document.getElementById("uname").value == "")
+	{
+		alert('Please enter Username');
+	}
+if(document.getElementById("pwd").value == "")
+	{
+		alert('Please enter password');
+	}
+</script>
 
 <div>
 
@@ -25,11 +34,10 @@ body {background-color : powderblue}
 Username : <input type = "text" id = "uname" name = "uname"/><br><br>
 Password : <input type = "password" id = "pwd" name = "pwd"/><br><br>
 
-<input type = "Submit" value = "Login" name = "login"/>
+<input type = "Submit" value = "Login" name = "login" onclick = "validate()"/>
 
 
 </form>
-
 
 </div>
 

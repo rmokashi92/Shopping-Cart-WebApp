@@ -33,13 +33,14 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("here");
 		HttpSession session = request.getSession();
 		User userInfo = ConnectDb.sessionInfo(response.getHeader("uname"));
 		session.setAttribute("userInfo", userInfo);
+		session.setAttribute("uname", userInfo.getFname());
 		
 		RequestDispatcher view = request.getRequestDispatcher("Home.jsp");
 	    view.forward(request, response);
+	    
 	}
 
 }
