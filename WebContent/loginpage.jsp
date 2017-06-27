@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 <style>
@@ -16,26 +16,16 @@ body {background-color : powderblue}
 <jsp:useBean id="temp" class = "com.data.ConnectDb" scope = "session"></jsp:useBean>
 <body>
 <img src = "amazon_logo_RGB.jpg" height="100" width="200" align = "middle"/>
-<script type="text/javascript">
-if(document.getElementById("uname").value == "")
-	{
-		alert('Please enter Username');
-	}
-if(document.getElementById("pwd").value == "")
-	{
-		alert('Please enter password');
-	}
-</script>
 
 <div>
 
 <h2>Login</h2>
 <form method = "post" action = "LoginVerify.jsp">
 
-Username : <input type = "text" id = "uname" name = "uname"/><br><br>
-Password : <input type = "password" id = "pwd" name = "pwd"/><br><br>
+Username : <input type = "text" id = "uname" name = "uname" placeholder = "Enter Username" required/><br><br>
+Password : <input type = "password" id = "pwd" name = "pwd" placeholder = "Enter Password" required/><br><br>
 
-<input type = "Submit" value = "Login" name = "login" onclick = "validate()"/>
+<input type = "Submit" value = "Login" name = "login"/>
 
 
 </form>
