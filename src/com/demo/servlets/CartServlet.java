@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.data.ConnectDb;
+import com.demo.model.Product;
 import com.demo.model.User;
 
 
@@ -50,13 +51,14 @@ public class CartServlet extends HttpServlet {
 		if(request.getParameter("viewcart")!= null || request.getParameter("addtocart")!=null)
 		{
 		String[] names = request.getParameterValues("products");
-		ArrayList<String> products = new ArrayList<>();
+		
+		ArrayList<Product> products = new ArrayList<>();
 		
 		
 		
-		if((ArrayList<String>)(request.getSession().getAttribute("productInfo"))!=null)
+		if((ArrayList<Product>)(request.getSession().getAttribute("productInfo"))!=null)
 		{
-			ArrayList<String> basket = (ArrayList<String>)(request.getSession().getAttribute("productInfo"));
+			ArrayList<Product> basket = (ArrayList<Product>)(request.getSession().getAttribute("productInfo"));
 			for(int i = 0; i<basket.size(); i++)
 			{
 				products.add(basket.get(i));
@@ -67,17 +69,19 @@ public class CartServlet extends HttpServlet {
 		{
 		if(names != null)
 		{
-			for(int i = 0; i < names.length; i++)
+			//products = ConnectDb.getProdList(names);
+			ArrayList<Product> result = ConnectDb.getProdList(names);
+			for(int i = 0; i<result.size(); i++)
 			{
-				products.add(names[i]);
+				products.add(result.get(i));
 			}
+					
 		}
 		
 		}
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("productInfo", products);
-		//session.putValue("productInfo",products );
 		
 		RequestDispatcher view = request.getRequestDispatcher("checkout.jsp");
 	    view.forward(request, response);
@@ -96,10 +100,11 @@ public class CartServlet extends HttpServlet {
 				}
 			}
 			
-			ArrayList<String> wish = new ArrayList<>();
+			ArrayList<Product> wish = new ArrayList<>();
 			wish = ConnectDb.getWishList(u.getUname());
 			
 			session.setAttribute("wishInfo", wish);
+			//request.setAttribute("List", wish);
 			RequestDispatcher view = request.getRequestDispatcher("wishList.jsp");
 		    view.forward(request, response);
 		}

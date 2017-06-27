@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import com.demo.model.Login;
+import com.demo.model.Product;
 import com.demo.model.User;
 
 public class ConnectDb {
@@ -157,9 +158,10 @@ public class ConnectDb {
 
 
 
-	public static ArrayList<String> getWishList(String uname) {
+	public static ArrayList<Product> getWishList(String uname) {
 		// TODO Auto-generated method stub
-		ArrayList<String> result = new ArrayList<>();
+		ArrayList<Product> result = new ArrayList<>();
+		ArrayList<String> names = new ArrayList<>();
 		
 		try{
 			ps = con.prepareStatement("select * from wishlist where uname = ?;");
@@ -169,7 +171,7 @@ public class ConnectDb {
 			
 			while(rs.next())
 			{
-				result.add(rs.getString("product"));
+				names.add(rs.getString("product"));
 			}
 			
 		}catch(Exception e)
@@ -177,9 +179,48 @@ public class ConnectDb {
 			e.printStackTrace();
 		}
 		
+		String[] namearr = new String[names.size()];
+		for(int i = 0;i<names.size(); i++)
+		{
+			namearr[i] = names.get(i);
+		}
+		
+		result = getProdList(namearr);
+		
 		
 		return result;
 		
+	}
+
+
+
+	public static ArrayList<Product> getProdList(String[] names) {
+		// TODO Auto-generated method stub
+		ArrayList<Product> result = new ArrayList<>();
+		int length = names.length;
+		
+		for(int i = 0; i<length;i++)
+		{
+			try{
+				ps = con.prepareStatement("select * from product_table where name = ?;");
+				ps.setString(1, names[i]);
+				
+				ResultSet rs = ps.executeQuery();
+				
+				while(rs.next())
+				{
+					Product p = new Product(rs.getString("name"),rs.getDouble("price"),rs.getInt("quantity"));
+					result.add(p);
+				}
+				
+				
+			}catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		
+		return result;
 	}
 	
 	

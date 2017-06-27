@@ -30,9 +30,9 @@ body {background-color : powderblue}
 <option value = "TV">TV</option>
 <option value = "Laptop">Laptop</option>
 <option value = "Mobile">Mobile</option>
-<option value = "Watch">Wrist Watch</option>
-<option value = "Oven">Microwaves</option>
-<option value = "Fridge">Refrigerator</option>
+<option value = "Wrist Watch">Wrist Watch</option>
+<option value = "Microwaves">Microwaves</option>
+<option value = "Refrigerator">Refrigerator</option>
 </select><br><br>
 <input type = "Submit" id = "viewcart" value = "View Cart" name = "viewcart"/>
 <input type = "Submit" id = "addtocart" value="Add to Cart" name = "addtocart"/>
