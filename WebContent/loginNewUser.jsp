@@ -16,7 +16,8 @@ body {background-color : powderblue}
 </head>
 
 <body>
-
+<img src = "amazon_logo_RGB.jpg" height="100" width="200" align = "middle"/>
+<hr>
 <h3>Enter following credentials</h3>
 <div>
 <form method = "post" action = "successpage.jsp">

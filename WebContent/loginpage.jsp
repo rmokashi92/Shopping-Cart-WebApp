@@ -16,7 +16,7 @@ body {background-color : powderblue}
 <jsp:useBean id="temp" class = "com.data.ConnectDb" scope = "session"></jsp:useBean>
 <body>
 <img src = "amazon_logo_RGB.jpg" height="100" width="200" align = "middle"/>
-
+<hr>
 <div>
 
 <h2>Login</h2>

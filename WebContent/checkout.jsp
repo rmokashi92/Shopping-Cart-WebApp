@@ -7,6 +7,7 @@
 h2 {text-align : center}
 h3 {text-align : center}
 div {text-align : center}
+a {text-align :center}
 body {background-color : powderblue}
 
 </style>
@@ -15,9 +16,14 @@ body {background-color : powderblue}
 </head>
 <body>
 <img src = "amazon_logo_RGB.jpg" height="100" width="200" align = "middle"/>
+<div>
 
+<hr>
 <h2>The following items are present in your cart:</h2>
 <%=session.getAttribute("productInfo") %>
+<br><br><br>
 
+<a href = "Logout.jsp">Logout</a>
+</div>
 </body>
 </html>

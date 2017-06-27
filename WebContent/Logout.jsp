@@ -7,6 +7,7 @@
 h2 {text-align : center}
 h3 {text-align : center}
 div {text-align : center}
+a {text-align :center}
 body {background-color : powderblue}
 
 </style>
@@ -18,11 +19,12 @@ body {background-color : powderblue}
 <div>
 
 <hr>
-<h2>The following items are present in your current WishList:</h2>
-<%=session.getAttribute("wishInfo") %>
+<h2>You have logged out successfully!</h2>
+<%session.invalidate(); %>
 
 <br><br><br>
-<a href = "Logout.jsp">Logout</a>
+
+<a href = "loginpage.jsp">Back to Login</a>
 </div>
 </body>
 </html>

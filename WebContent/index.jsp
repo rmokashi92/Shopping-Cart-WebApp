@@ -15,6 +15,7 @@ body {background-color : powderblue}
 
 <body>
 <img src = "amazon_logo_RGB.jpg" height="100" width="200" align = "middle"/>
+<hr>
 <h2>Hello, Guest</h2>
 
 <h3>WELCOME TO ELECTRONICS SECTION:</h3>
