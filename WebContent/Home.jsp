@@ -25,7 +25,7 @@ body {background-color : powderblue}
 
 
 <form method = "post" action = "CartServlet">
-<select name = "products" multiple>
+<select name = "products" size = "7" multiple>
 <option value = "USB">USB</option>
 <option value = "TV">TV</option>
 <option value = "Laptop">Laptop</option>
