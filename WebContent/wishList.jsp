@@ -16,8 +16,8 @@ body {background-color : powderblue}
 <body>
 <img src = "amazon_logo_RGB.jpg" height="100" width="200" align = "middle"/>
 
-<h2>The following items are present in your cart:</h2>
-<%=session.getAttribute("productInfo") %>
+<h2>The following items are present in your current WishList:</h2>
+<%=session.getAttribute("wishInfo") %>
 
 </body>
 </html>

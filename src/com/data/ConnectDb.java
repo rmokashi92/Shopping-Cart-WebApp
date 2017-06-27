@@ -1,6 +1,7 @@
 package com.data;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import com.demo.model.Login;
 import com.demo.model.User;
@@ -127,6 +128,57 @@ public class ConnectDb {
 		}
 		
 		return false;
+		
+	}
+
+
+
+	public static void addWish(String uname, String[] names) {
+		// TODO Auto-generated method stub
+		int length = names.length;
+		
+		for(int i = 0; i<length; i++)
+		{
+			try{
+				ps = con.prepareStatement("insert into wishlist (uname,product) values(?,?);");
+				ps.setString(1, uname);
+				ps.setString(2, names[i]);
+				
+				ps.executeUpdate();
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		
+		
+	}
+
+
+
+	public static ArrayList<String> getWishList(String uname) {
+		// TODO Auto-generated method stub
+		ArrayList<String> result = new ArrayList<>();
+		
+		try{
+			ps = con.prepareStatement("select * from wishlist where uname = ?;");
+			ps.setString(1, uname);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next())
+			{
+				result.add(rs.getString("product"));
+			}
+			
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		return result;
 		
 	}
 	

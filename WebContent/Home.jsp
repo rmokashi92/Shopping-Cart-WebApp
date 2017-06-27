@@ -34,15 +34,19 @@ body {background-color : powderblue}
 <option value = "Oven">Microwaves</option>
 <option value = "Fridge">Refrigerator</option>
 </select><br><br>
+<input type = "Submit" id = "viewcart" value = "View Cart" name = "viewcart"/>
 <input type = "Submit" id = "addtocart" value="Add to Cart" name = "addtocart"/>
+
+<h2> You can also add items to your WishList</h2><br><br>
+<input type = "Submit" id = "viewwish" value = "View Wish List" name = "viewwish"/><br><br>
+<input type = "Submit" id = "wish" value = "Add to Wish List" name = "wish" />
+
 </form><br><br>
 
 
 
-<form method = "post" action = "WishServlet">
-<h2> You can also add items to your WishList</h2><br><br>
-<input type = "Submit" id = "wish" value = "Add to Wish List" name = "wish" />
-</form>
+
+
 
 </div>
 

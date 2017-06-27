@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.data.ConnectDb;
+import com.demo.model.User;
+
 
 
 /**
@@ -43,8 +46,13 @@ public class CartServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		//System.out.println("here");
+		
+		if(request.getParameter("viewcart")!= null || request.getParameter("addtocart")!=null)
+		{
 		String[] names = request.getParameterValues("products");
 		ArrayList<String> products = new ArrayList<>();
+		
+		
 		
 		if((ArrayList<String>)(request.getSession().getAttribute("productInfo"))!=null)
 		{
@@ -55,13 +63,16 @@ public class CartServlet extends HttpServlet {
 			}
 		}
 		
-		
-		if(names.length>0)
+		if(request.getParameter("addtocart")!=null)
+		{
+		if(names != null)
 		{
 			for(int i = 0; i < names.length; i++)
 			{
 				products.add(names[i]);
 			}
+		}
+		
 		}
 		
 		HttpSession session = request.getSession();
@@ -70,7 +81,28 @@ public class CartServlet extends HttpServlet {
 		
 		RequestDispatcher view = request.getRequestDispatcher("checkout.jsp");
 	    view.forward(request, response);
-		
+		}
+		else if(request.getParameter("viewwish")!= null || request.getParameter("wish")!=null)
+		{
+			HttpSession session = request.getSession();
+			User u = (User)session.getAttribute("userInfo");
+			
+			if(request.getParameter("wish")!=null)
+			{
+				String[] names = request.getParameterValues("products");
+				if(names!=null)
+				{
+					ConnectDb.addWish(u.getUname(), names);
+				}
+			}
+			
+			ArrayList<String> wish = new ArrayList<>();
+			wish = ConnectDb.getWishList(u.getUname());
+			
+			session.setAttribute("wishInfo", wish);
+			RequestDispatcher view = request.getRequestDispatcher("wishList.jsp");
+		    view.forward(request, response);
+		}
 		
 		
 		
