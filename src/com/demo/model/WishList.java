@@ -8,41 +8,52 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user_login")
-public class Login {
+@Table(name = "wishlist")
+public class WishList {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id; 
+	private int id;
 	@Column
 	private String uname;
 	@Column
-	private String password;
+	private String product;
 	
-	
-	public Login()
-	{
-		super();
-	}
-	
-	public Login(String uname, String password) {
+	public WishList( String uname, String product) {
 		super();
 		this.uname = uname;
-		this.password = password;
+		this.product = product;
 	}
-	
+
+	public WishList() {
+		super();
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getUname() {
 		return uname;
 	}
+
 	public void setUname(String uname) {
 		this.uname = uname;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
+
+	public String getProduct() {
+		return product;
 	}
 
-
+	public void setProduct(String product) {
+		this.product = product;
+	}
+	
+	
+	
+	
 
 }

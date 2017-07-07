@@ -21,7 +21,7 @@ body {background-color : powderblue}
 <h3>WELCOME TO ELECTRONICS SECTION:</h3>
 <div>
 <form method = "post" action = "CartServlet">
-<select multiple>
+<select name = "products" size = "7" multiple>
 <option value = "usb">USB</option>
 <option value = "tv">TV</option>
 <option value = "laptop">Laptop</option>

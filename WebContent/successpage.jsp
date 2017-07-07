@@ -13,7 +13,7 @@ body {background-color : powderblue}
 <title>Success</title>
 </head>
 <jsp:useBean id="service" class = "com.demo.model.User" scope= "session"></jsp:useBean>
-<jsp:useBean id="temp" class = "com.data.ConnectDb" scope = "session"></jsp:useBean>
+<jsp:useBean id="temp" class = "com.data.HibernateConnect" scope = "session"></jsp:useBean>
 <jsp:setProperty name="service" property="*"/>
 <body>
 <div>

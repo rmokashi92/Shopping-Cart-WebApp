@@ -2,6 +2,7 @@ package com.demo.servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,9 +12,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.data.ConnectDb;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
+
+import com.data.HibernateConnect;
+//import com.data.ConnectDb;
 import com.demo.model.Product;
 import com.demo.model.User;
+import com.demo.model.WishList;
 
 
 
@@ -43,10 +52,17 @@ public class CartServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
+	
+	
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		//System.out.println("here");
+		
+		
+		
 		
 		if(request.getParameter("viewcart")!= null || request.getParameter("addtocart")!=null)
 		{
@@ -70,7 +86,10 @@ public class CartServlet extends HttpServlet {
 		if(names != null)
 		{
 			//products = ConnectDb.getProdList(names);
-			ArrayList<Product> result = ConnectDb.getProdList(names);
+			//ArrayList<Product> result = ConnectDb.getProdList(names);
+			ArrayList<Product> result = HibernateConnect.getProdList(names);
+			
+			
 			for(int i = 0; i<result.size(); i++)
 			{
 				products.add(result.get(i));
@@ -96,21 +115,20 @@ public class CartServlet extends HttpServlet {
 				String[] names = request.getParameterValues("products");
 				if(names!=null)
 				{
-					ConnectDb.addWish(u.getUname(), names);
+					HibernateConnect.addWish(u.getUname(), names);
 				}
-			}
-			
+			}	
 			ArrayList<Product> wish = new ArrayList<>();
-			wish = ConnectDb.getWishList(u.getUname());
+			wish = HibernateConnect.getWishList(u.getUname());			
 			
 			session.setAttribute("wishInfo", wish);
 			//request.setAttribute("List", wish);
 			RequestDispatcher view = request.getRequestDispatcher("wishList.jsp");
 		    view.forward(request, response);
+		
+		
+		
 		}
-		
-		
-		
 	}
 
 }

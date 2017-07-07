@@ -18,7 +18,7 @@ window.onhashchange=function(){window.location.hash="no-back-button";}
 <title>User Login</title>
 </head>
 <jsp:useBean id="service" class = "com.demo.model.User" scope= "session"></jsp:useBean>
-<jsp:useBean id="temp" class = "com.data.ConnectDb" scope = "session"></jsp:useBean>
+<jsp:useBean id="temp" class = "com.data.HibernateConnect" scope = "session"></jsp:useBean>
 <body>
 <img src = "amazon_logo_RGB.jpg" height="100" width="200" align = "middle"/>
 <hr>

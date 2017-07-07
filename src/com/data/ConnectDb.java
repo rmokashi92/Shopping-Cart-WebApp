@@ -137,15 +137,29 @@ public class ConnectDb {
 	public static void addWish(String uname, String[] names) {
 		// TODO Auto-generated method stub
 		int length = names.length;
+		boolean flag = false;
 		
 		for(int i = 0; i<length; i++)
 		{
 			try{
-				ps = con.prepareStatement("insert into wishlist (uname,product) values(?,?);");
+				ps = con.prepareStatement("select product from wishlist where uname = ?;");
 				ps.setString(1, uname);
-				ps.setString(2, names[i]);
 				
-				ps.executeUpdate();
+				ResultSet rs = ps.executeQuery();
+				
+				while(rs.next())
+				{
+					flag = true;
+				}
+				
+				if(!flag)
+				{
+					ps = con.prepareStatement("insert into wishlist (uname,product) values(?,?);");
+					ps.setString(1, uname);
+					ps.setString(2, names[i]);
+				
+					ps.executeUpdate();
+				}
 			}
 			catch(Exception e)
 			{
@@ -198,6 +212,7 @@ public class ConnectDb {
 		// TODO Auto-generated method stub
 		ArrayList<Product> result = new ArrayList<>();
 		int length = names.length;
+		new ConnectDb();
 		
 		for(int i = 0; i<length;i++)
 		{

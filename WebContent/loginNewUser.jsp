@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.sql.*" %>
     
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <style>
@@ -24,7 +24,7 @@ body {background-color : powderblue}
 First Name : <input type = "text" id = "fname" name = "fname"/><br><br>
 Last Name : <input type = "text" id = "lname" name = "lname"/><br><br>
 UserName : <input type = "text" id = "uname" name = "uname"/><br><br>
-Email : <input type = "text" id = "email" name = "email"/><br><br>
+Email : <input type = "email" id = "email" name = "email"/><br><br>
 Password : <input type = "password" id = "password" name = "password"/><br><br>
 
 <input type = "Submit" id = "register" name = "register"/>

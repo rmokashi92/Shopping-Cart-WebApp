@@ -14,7 +14,7 @@ body {background-color : powderblue}
 <title>Insert title here</title>
 </head>
 
-<jsp:useBean id="temp" class = "com.data.ConnectDb" scope = "session"></jsp:useBean>
+<jsp:useBean id="temp" class = "com.data.HibernateConnect" scope = "session"></jsp:useBean>
 <body>
 
 <% boolean flag = false;
