@@ -24,7 +24,18 @@
   <h2 class="w3-margin">You have logged out successfully!</h2>
     
     
-<%session.invalidate(); %>
+<%session.invalidate();
+Cookie[] token = request.getCookies();
+int len = token.length;
+
+for(int i = 0; i< len; i++)
+{
+	token[i].setMaxAge(0);
+	token[i].setValue(null);
+	response.addCookie(token[i]);
+}
+
+%>
  <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top" onclick="location.href='loginpage.jsp'">Back to Login</button> 
  
 

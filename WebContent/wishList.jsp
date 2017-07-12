@@ -3,6 +3,18 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+
+<script>
+var elements = document.cookie.split('=');
+var info = elements[1];
+console.log(info);
+if(info == null)
+	{
+		window.location = "loginpage.jsp";
+	}
+
+</script>
+
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">

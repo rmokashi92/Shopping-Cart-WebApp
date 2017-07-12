@@ -100,6 +100,7 @@ public class CartServlet extends HttpServlet {
 		}
 		
 		HttpSession session = request.getSession();
+		
 		session.setAttribute("productInfo", products);
 		
 		RequestDispatcher view = request.getRequestDispatcher("checkout.jsp");

@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="style1.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Welcome!</title>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
   <div class="w3-content">
 <div>
 <form method = "post" action = "CartServlet">
-<select name = "products" size = "7" multiple>
+<select name = "products" size = "7" multiple style="width:200px">
 <option value = "usb">USB</option>
 <option value = "tv">TV</option>
 <option value = "laptop">Laptop</option>

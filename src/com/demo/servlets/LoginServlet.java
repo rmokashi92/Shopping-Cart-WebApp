@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,10 +49,18 @@ public class LoginServlet extends HttpServlet {
 		
 		
 		HttpSession session = request.getSession();
+		
+	  
+		
 		//User userInfo = ConnectDb.sessionInfo(response.getHeader("uname"));
 		User userInfo = HibernateConnect.sessionInfo(response.getHeader("uname"));
+		
+		
 		session.setAttribute("userInfo", userInfo);
 		session.setAttribute("uname", userInfo.getFname());
+		
+		Cookie ck=new Cookie("name",userInfo.getFname());  
+        response.addCookie(ck);
 		
 		RequestDispatcher view = request.getRequestDispatcher("Home.jsp");
 	    view.forward(request, response);

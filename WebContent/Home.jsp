@@ -3,6 +3,10 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
  <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -10,6 +14,20 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="style1.css" />
 <title>Home Page</title>
+
+<script>
+var elements = document.cookie.split('=');
+var info = elements[1];
+console.log(info);
+if(info == null)
+	{
+		window.location = "loginpage.jsp";
+	}
+
+</script>
+
+
+
 </head>
 <jsp:useBean id="service" class = "com.demo.model.User" scope= "session"></jsp:useBean>
 <body>
@@ -44,7 +62,7 @@
    
 <div>
 <form method = "post" action = "CartServlet">
-<select name = "products" size = "7" multiple>
+<select name = "products" size = "7" multiple style="width:200px">
 <option value = "USB">USB</option>
 <option value = "TV">TV</option>
 <option value = "Laptop">Laptop</option>
@@ -53,6 +71,7 @@
 <option value = "Microwaves">Microwaves</option>
 <option value = "Refrigerator">Refrigerator</option>
 </select><br><br>
+<input type="hidden" name="cookie" id="cookie" value= <%=session.getAttribute("uname")  %> />
 <input class="w3-button w3-black w3-padding-large w3-large w3-margin-top" type = "Submit" id = "viewcart" value = "View Cart" name = "viewcart"/>
 <input class="w3-button w3-black w3-padding-large w3-large w3-margin-top" type = "Submit" id = "addtocart" value="Add to Cart" name = "addtocart"/>
 
