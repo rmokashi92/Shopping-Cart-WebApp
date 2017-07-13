@@ -19,6 +19,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 
 import com.data.HibernateConnect;
+import com.demo.model.CartState;
 //import com.data.ConnectDb;
 import com.demo.model.Product;
 import com.demo.model.User;
@@ -70,14 +71,16 @@ public class CartServlet extends HttpServlet {
 		
 		ArrayList<Product> products = new ArrayList<>();
 		
+		ArrayList<CartState> prodcount = new ArrayList<>();
 		
 		
-		if((ArrayList<Product>)(request.getSession().getAttribute("productInfo"))!=null)
+		
+		if((ArrayList<CartState>)(request.getSession().getAttribute("cartinfo"))!=null)
 		{
-			ArrayList<Product> basket = (ArrayList<Product>)(request.getSession().getAttribute("productInfo"));
+			ArrayList<CartState> basket = (ArrayList<CartState>)(request.getSession().getAttribute("cartinfo"));
 			for(int i = 0; i<basket.size(); i++)
 			{
-				products.add(basket.get(i));
+				prodcount.add(basket.get(i));
 			}
 		}
 		
@@ -90,10 +93,42 @@ public class CartServlet extends HttpServlet {
 			ArrayList<Product> result = HibernateConnect.getProdList(names);
 			
 			
-			for(int i = 0; i<result.size(); i++)
+			if(prodcount.isEmpty())
+			{
+				for(int i = 0; i<result.size(); i++)
+				{
+					CartState cs = new CartState(result.get(i), 1);
+					prodcount.add(cs);
+				}
+				 
+			}
+			else{
+				boolean flag = false;
+				for(int i = 0; i<result.size(); i++)
+				{
+					for(int j = 0; j<prodcount.size();j++)
+					{
+						if(result.get(i).getName().equals(prodcount.get(j).getProdinfo().getName())){
+							int count = prodcount.get(j).getCount();
+							prodcount.get(j).setCount(count+1);
+							flag = true;
+						}
+						
+					}
+					if(!flag)
+					{
+							CartState cs = new CartState(result.get(i), 1);
+							prodcount.add(cs);
+					}
+				}
+			}
+			
+			
+			
+			/*for(int i = 0; i<result.size(); i++)
 			{
 				products.add(result.get(i));
-			}
+			}*/
 					
 		}
 		
@@ -102,6 +137,7 @@ public class CartServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		session.setAttribute("productInfo", products);
+		session.setAttribute("cartinfo", prodcount);
 		
 		RequestDispatcher view = request.getRequestDispatcher("checkout.jsp");
 	    view.forward(request, response);

@@ -49,19 +49,22 @@ if(info == null)
 <hr>
 <h2 class="w3-margin">The following items are present in your cart:</h2>
 
-<table border=1 align = "center">
+<table border=1 class="table table-striped">
         <thead>
             <tr>
                 <th bgcolor="grey">Product Name</th>
                 <th bgcolor="grey">Price</th>
+                 <th bgcolor="grey">Quantity</th>
             </tr>
         </thead>
         <tbody>
         
-            <c:forEach items="${productInfo}" var="row">
+            <c:forEach items="${cartinfo}" var="row">
                 <tr>
-                    <td bgcolor="white"><c:out value="${row.name}" /></td>
-                    <td bgcolor="white"><c:out value="${row.price}" /></td>
+                    <td bgcolor="white"><c:out value="${row.prodinfo.name}" /></td>
+                    <td bgcolor="white"><c:out value="${row.prodinfo.price}" /></td>
+                    <td bgcolor="white"><c:out value="${row.count}"/></td>
+                    <td><input type="button" value = "Drop"/></td>
                 </tr>
             </c:forEach>
         </tbody>
