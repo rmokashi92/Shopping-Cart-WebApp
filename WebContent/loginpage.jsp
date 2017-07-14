@@ -16,7 +16,9 @@
 <body>
 
 <header class="w3-container w3-light-grey w3-center" style="padding:20px 16px">
+<a href = "index.jsp">
 <img src = "amazon_logo_RGB.jpg" height="100" width="200" align = "left"/>
+</a>
 
 </header>
 

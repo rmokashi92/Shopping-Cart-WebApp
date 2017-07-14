@@ -4,17 +4,6 @@
 <html>
 <head>
 
-<script>
-var elements = document.cookie.split('=');
-var info = elements[1];
-console.log(info);
-if(info == null)
-	{
-		window.location = "loginpage.jsp";
-	}
-
-</script>
-
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
@@ -25,11 +14,11 @@ if(info == null)
 <%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 </head>
 <body>
+
 <div class="w3-top">
   <div class="w3-bar w3-green w3-card-2 w3-large">
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-green" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     <a href="Home.jsp" class="w3-bar-item w3-button w3-padding-large w3-left-align w3-white">Home</a>
-    <a href="Logout.jsp" class="w3-bar-item w3-button w3-padding-large w3-right-align w3-white">Logout</a>
     </div>
 
   <!-- Navbar on small screens -->
@@ -39,35 +28,38 @@ if(info == null)
 </div>
 <header class="w3-container w3-light-grey w3-center" style="padding:50px 16px">
 <img src = "amazon_logo_RGB.jpg" height="100" width="200" align = "left"/>  
+<h2 class = "w3-margin">Sign Up today for exciting features and offers!</h2>
   
 </header>
-
 <div class="w3-row-padding w3-light-green w3-padding-64 w3-container w3-center" >
   <div class="w3-content">
 <div>
 
+<hr>
+<h2 class="w3-margin">The following items are present in your cart:</h2>
 
-<h2 class="w3-margin">The following items are present in your current WishList:</h2>
-
-
-<table border=1 class = "w3-center">
+<form method="post" action = "CartServlet">
+<table border=1 class="table table-striped">
         <thead>
             <tr>
                 <th bgcolor="grey">Product Name</th>
+                <th bgcolor="grey">Price</th>
+                 <th bgcolor="grey">Quantity</th>
             </tr>
         </thead>
         <tbody>
         
-            <c:forEach items="${wishInfo}" var="row">
+            <c:forEach items="${cartinfo}" var="row">
                 <tr>
-                    <td bgcolor="white"><c:out value="${row.name}" /></td>
+                    <td bgcolor="white"><c:out value="${row.prodinfo.name}" /></td>
+                    <td bgcolor="white"><c:out value="${row.prodinfo.price}" /></td>
+                    <td bgcolor="white"><c:out value="${row.count}"/></td>
+                    <td><input class="w3-button w3-light-grey w3-margin-top" type="submit" value = "Drop" id = "Drop${row.prodinfo.id}" name = "Drop${row.prodinfo.id}"/></td>
                 </tr>
             </c:forEach>
         </tbody>
     </table><br><br><br>
-
-
-
+</form>
 <br><br><br>
 
 </div>

@@ -60,7 +60,45 @@ public class CartServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		//System.out.println("here");
+		
+		//boolean isUser = false;
+		
+		for(int i = 1;i<8;i++)
+		{
+			if(request.getParameter("Drop"+i)!=null)
+			{
+				ArrayList<CartState> deleteCart = (ArrayList<CartState>)(request.getSession().getAttribute("cartinfo"));
+				int length = deleteCart.size();
+				int del_index = i;
+				boolean isdeleted = false;
+				
+				for(int j = 0; j<length; j++)
+				{
+					if(deleteCart.get(j).getProdinfo().getId() == del_index)
+					{
+						deleteCart.remove(j);
+						isdeleted = true;
+					}
+					if(isdeleted)
+					{
+						break;
+					}
+				}
+				HttpSession session = request.getSession();
+				
+				session.setAttribute("cartinfo", deleteCart);
+				if(session.getAttribute("uname")!=null){
+					RequestDispatcher view = request.getRequestDispatcher("checkout.jsp");
+				    view.forward(request, response);
+					}
+					else{
+						RequestDispatcher view = request.getRequestDispatcher("guestCheckout.jsp");
+					    view.forward(request, response);
+					}
+				
+				
+			}
+		}
 		
 		
 		
@@ -139,8 +177,14 @@ public class CartServlet extends HttpServlet {
 		session.setAttribute("productInfo", products);
 		session.setAttribute("cartinfo", prodcount);
 		
+		if(session.getAttribute("uname")!=null){
 		RequestDispatcher view = request.getRequestDispatcher("checkout.jsp");
 	    view.forward(request, response);
+		}
+		else{
+			RequestDispatcher view = request.getRequestDispatcher("guestCheckout.jsp");
+		    view.forward(request, response);
+		}
 		}
 		else if(request.getParameter("viewwish")!= null || request.getParameter("wish")!=null)
 		{

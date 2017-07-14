@@ -26,15 +26,16 @@
 <div>
 <form method = "post" action = "CartServlet">
 <select name = "products" size = "7" multiple style="width:200px">
-<option value = "usb">USB</option>
-<option value = "tv">TV</option>
-<option value = "laptop">Laptop</option>
-<option value = "mobile">Mobile</option>
-<option value = "watch">Wrist Watch</option>
-<option value = "oven">Microwaves</option>
-<option value = "fridge">Refrigerator</option>
+<option value = "USB">USB</option>
+<option value = "TV">TV</option>
+<option value = "Laptop">Laptop</option>
+<option value = "Mobile">Mobile</option>
+<option value = "Wrist Watch">Wrist Watch</option>
+<option value = "Microwaves">Microwaves</option>
+<option value = "Refrigerator">Refrigerator</option>
 </select><br><br>
-<input type = "Submit" id = "addtocart" value="Add to Cart" name = "addtocart"/>
+<input class="w3-button w3-black w3-padding-large w3-large w3-margin-top" type = "Submit" id = "viewcart" value = "View Cart" name = "viewcart"/>
+<input class="w3-button w3-black w3-padding-large w3-large w3-margin-top" type = "Submit" id = "addtocart" value="Add to Cart" name = "addtocart"/>
 </form><br><br>
 
 <button class="w3-button w3-white w3-padding-large w3-large w3-margin-top" onclick="location.href='loginNewUser.jsp'">New User? Register!</button> 

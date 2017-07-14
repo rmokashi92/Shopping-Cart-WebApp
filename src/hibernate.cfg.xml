@@ -16,7 +16,8 @@
 
    <!-- Assume test is the database name -->
    <property name="hibernate.connection.url">
-      jdbc:mysql://localhost:3306/mydata
+       jdbc:mysql://mysql-instance1.cljgwfbrtikv.us-east-2.rds.amazonaws.com:3306/mydata  
+    <!--   jdbc:mysql://localhost:3306/mydata--> 
    </property>
    <property name="hibernate.connection.username">
       root

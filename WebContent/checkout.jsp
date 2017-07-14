@@ -49,6 +49,7 @@ if(info == null)
 <hr>
 <h2 class="w3-margin">The following items are present in your cart:</h2>
 
+<form method="post" action = "CartServlet">
 <table border=1 class="table table-striped">
         <thead>
             <tr>
@@ -64,12 +65,12 @@ if(info == null)
                     <td bgcolor="white"><c:out value="${row.prodinfo.name}" /></td>
                     <td bgcolor="white"><c:out value="${row.prodinfo.price}" /></td>
                     <td bgcolor="white"><c:out value="${row.count}"/></td>
-                    <td><input type="button" value = "Drop"/></td>
+                    <td><input class="w3-button w3-light-grey w3-margin-top" type="submit" value = "Drop" id = "Drop${row.prodinfo.id}" name = "Drop${row.prodinfo.id}"/></td>
                 </tr>
             </c:forEach>
         </tbody>
     </table><br><br><br>
-
+</form>
 <br><br><br>
 
 </div>
